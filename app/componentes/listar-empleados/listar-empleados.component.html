@@ -1,0 +1,44 @@
+<div class="card" style="margin-top:30px; width:1000px;">
+    <div class="card-header">
+        Empleados
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formDNI">
+            <div class="mb-3">
+                <input style="text-align:center;" formControlName="buscar" on-focusout="BuscarDNI()" type="text" class="form-control" name="buscar" id="buscar" aria-describedby="helpId" placeholder="DNI">
+            </div>
+        </form>
+        <table class="table">
+            <thead style="text-align:center;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Fecha del contrato</th>
+                    <th>Días de vacaciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center;">
+                <!-- iControl borra la fila del listado en caso de borrado -->
+                <tr *ngFor = "let empleado of Empleados; let iControl = index">
+                    <td>{{ empleado.id }}</td>
+                    <td>{{ empleado.nombre }}</td>
+                    <td>{{ empleado.dni }}</td>
+                    <td>{{ empleado.fecha }}</td>
+                    <td>{{ empleado.vacaciones }}</td>
+                    <td>
+                        <div class="btn-group" role="group" style="width: 80%; text-align:center;">
+                            <button type="button" class="btn btn-outline-dark" style="height:35px; font-size:15px;" routerLink="/peticion-dias/{{ empleado.id }}">Vacaciones</button>
+                            <button type="button" class="btn btn-outline-dark" style="height:35px; font-size:15px;" routerLink="/editar-empleado/{{ empleado.id }}">Editar</button>
+                            <button type="button" class="btn btn-outline-dark" style="height:35px; font-size:15px;" (click)="borrarEmpleado(empleado.id, iControl)">Borrar</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="card" style="width:400px; margin-top:30px;">
+    <div class="card-header">
+        Editar Empleado
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formVacaciones" (ngSubmit)="enviarDatos()">
+            <div class="mb-3">
+                <label for="vacaciones" class="form-label">Peticion de días de vacaciones</label>
+                <input style="text-align:center;" formControlName="vacaciones" type="text" class="form-control" name="vacaciones" id="vacaciones">
+            </div>
+
+            <div class="btn-group" role="group" style="width: 100%;text-align:center;">
+                <button type="submit" class="btn btn-outline-dark" >Enviar</button>
+                <button type="button" class="btn btn-outline-dark" routerLink="/listar-empleados">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
